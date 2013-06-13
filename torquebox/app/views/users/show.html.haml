@@ -1,0 +1,8 @@
+
+.user
+  = @user.identifier
+
+  .bids
+    - @user.bids.each do |bid|
+      .bid
+        #{bid.amount} on #{bid.auction}

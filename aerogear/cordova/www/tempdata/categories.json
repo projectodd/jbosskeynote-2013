@@ -1,0 +1,34 @@
+[
+    {
+        "id": "0",
+        "name": "Modern Pop"
+    },
+    {
+        "id": "1",
+        "name": "Rock"
+    },
+    {
+        "id": "2",
+        "name": "80's Rock"
+    },
+    {
+        "id": "3",
+        "name": "Hip Hop"
+    },
+    {
+        "id": "4",
+        "name": "Dub Step"
+    },
+    {
+        "id": "5",
+        "name": "Country"
+    },
+    {
+        "id": "6",
+        "name": "Folk"
+    },
+    {
+        "id": "7",
+        "name": "Jam Bands"
+    }
+]

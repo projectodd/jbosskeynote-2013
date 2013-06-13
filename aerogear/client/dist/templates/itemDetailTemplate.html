@@ -1,0 +1,42 @@
+<div class="ui-grid-a">
+	<div id="itemDetail" class="ui-block-a">
+        <img src="images/items/<%=item.get("image_key")%>" class="bid profileImg">
+    </div>
+    <div class="auction ui-block-b">
+        <span>Current bid price:</span>
+        <div class="bidmoney">$<%=currentBid%></div>
+    </div>
+</div>
+<div class="auction bidtimeinfo">
+    <span id="remaining"><%
+    var count = timeRemaining.time || 0,
+        currentItemRemaining = timeRemaining,
+        currentType = timeRemaining.type;
+
+    if( count !== 0 ) {
+        var countdown = setInterval(function(){
+            if (count === 0) {
+                clearTimeout( countdown );
+                currentItemRemaining = item.timeRemaining();
+            }
+            if( currentItemRemaining.message === "Auction has ended" ) {
+                $( "#remaining" ).text( currentItemRemaining.message );
+            } else {
+                $( "#remaining" ).text( count + " " + currentItemRemaining.message );
+            }
+            currentType = currentItemRemaining.type;
+            count--;
+        }, 1000);
+
+        jbw.countDown.push( countdown );
+    }
+    %>
+    <%=timeRemaining.time%> <%=timeRemaining.message%></span>
+</div>
+<div class="<%=ended%>">
+    <div id="submitting" class="hidden" style="text-align:center">Submitting....</div>
+    <form id="bidForm" data-ajax="false" >
+        <input type="text" name="bid" id="bid" placeholder="Bid" pattern="[0-9]*" value="<%=currentBid+1%>" class="auction bidinput"/>
+        <input type="submit" data-role="button" data-inline="true" name="submit" value="Submit Bid" id="submitbid">
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<div data-role="header" data-position="fixed" data-id="myHeader">
+    <h1>Item Detail</h1>
+    <a href=#items/<%=category%> data-role="button" data-inline="true">back</a>
+    <a class="panel" id="right-panel-button" data-role="button" data-icon="bars" data-iconpos="notext"></a>
+    <span class="countbubble"><%=notificationCount%></span>
+</div>
+<div id="alertwrapper"></div>
+<div data-role="content">
+    <div id="itemDetail" style="float:left">
+        <img src="images/trey_g.png" class="profileImg">
+    </div>
+    <div style="float:left;margin-top:50px;margin-left: 5px;">
+        <span>Name: Treys Guitar </span>
+    </div>
+    <div style="clear:both"></div>
+    <div class="center">
+        <a href=#bid/<%=category%>/<%=item%> data-role="button" data-inline="true">Place Bid</a>
+    </div>
+    <div>
+         <ul data-role="listview" data-inset="true">
+            <li>Current Bid: <span style="float:right">$100</span></li>
+            <li>Time left: <span style="float:right">10s</span></li>
+            <!--<li>Cash Remaining: <span style="float:right">$2</span></li>-->
+        </ul>
+    </div>
+</div>
+<div data-role="footer" data-position="fixed" data-id="myFooter">
+    <div data-role="navbar">
+        <ul>
+            <li id="footercash" ><a><%=cash%></a></li>
+            <li id="footerpoints" ><a><%=points%></a></li>
+        </ul>
+    </div>
+</div>

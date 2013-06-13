@@ -1,0 +1,7 @@
+out/
+xcuserdata/
+.classpath
+.project
+*gen/
+bin/
+build/

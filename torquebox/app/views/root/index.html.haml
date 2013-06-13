@@ -1,0 +1,68 @@
+
+= javascript_include_tag "http://#{request.host}:#{endpoint.port}/stomp.js"
+= javascript_include_tag :root
+
+%script#auction-template{:type=>'text/x-handlebars-template'}
+  .container
+    .image
+    .pending.panel
+      .start{:href=>'/auctions/{{id}}/start'}
+        Start Auction Now
+      -#.operations
+        -#%a{:href=>'/auctions/{{id}}/start'} Start
+    .inprogress.panel
+      .high-bid
+        %span.data $0
+      .number-of-bids
+        %span.data 0
+        bids
+      .bids-per-second
+        .data 0
+        bids/second
+      .bids-per-user
+        .data 0
+        bids/user
+      .timer
+      .operations
+        -#%a{:href=>'/auctions/{{id}}/complete'} Complete
+        -#%a.withdraw{:href=>'/auctions/{{id}}/withdraw'} Withdraw
+    .finishing.panel
+      Finishing up
+    .completed.panel
+      .winner
+        .user
+          .data Nobody
+        won this auction for
+        .amount
+          .data $0
+      .operations
+        -#%a.withdraw{:href=>'/auctions/{{id}}/withdraw'} Withdraw
+  .title
+    {{title}}
+  
+%script#member-template{:type=>'text/x-handlebars-template'}
+  .member
+    .place
+      {{place}}
+    .profile_pic 
+      %img{:src=>"{{user.profile_pic}}"}
+    .details
+      .name
+        {{user.name}}
+      .score
+        Score: {{score}}
+
+
+#right-column
+  #leaderboard
+    %h1 Leaderboard
+    .members
+  #activity
+    #latest-activity
+  #controls
+    %a#shutdown{:href=>"/shutdown"} Shut it down!
+
+#auctions
+  .clearfix
+
+

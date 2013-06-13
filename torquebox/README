@@ -1,0 +1,23 @@
+
+Adjust RAILS_ROOT/data/auctions.yml to seed the database with auctions
+as there is *no* UI for adding/removing auction details.
+
+Assuming you have TorqueBox installed:
+
+  jruby -S bundle install
+  jruby -S rake db:setup
+
+Deploy:
+
+  torquebox deploy
+
+And run JBoss:
+
+  $JBOSS_HOME/bin/standalone.sh
+
+    XOR
+
+  torquebox run
+
+Currently developing this app against a built-from-source version of TorqueBox.
+

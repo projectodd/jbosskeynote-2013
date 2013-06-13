@@ -1,0 +1,300 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+html {
+  font-family: arial;
+}
+
+body {
+  background-color: #777;
+  margin: 0;
+}
+
+
+#header {
+  background-image: url('/assets/bg-red.png');
+}
+
+#navigation {
+  background-image: url('/assets/nav-bg.png');
+  background-repeat: repeat-x;
+  /* box-shadow: 0 0 20px #000; */
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.13), 0 -1px 0 rgba(0, 0, 0, 0.01)inset;
+  height: 2em;
+}
+
+#registered-users {
+  float: right;
+  font-size: 140%;
+  font-weight: bold;
+  margin-right: 2em;
+  margin-top: 1.5em;
+  color: #eee;
+}
+
+#leaderboard {
+  border-radius: 1em;
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+  padding: 1em;
+  padding-top: 1ex;
+  background-color: #fff;
+  width: 30em;
+  h1 {
+    color: #555;
+    font-size: 100%;
+  }
+  .members {
+    .member {
+      padding-bottom: 1ex;
+      margin-bottom: 1ex;
+      border-bottom: 1px dotted #999;
+      height: 60px;
+      .place { 
+        float: left;
+        width: 1.5em;
+        text-align: right;
+        font-size: 260%;
+        font-weight: bold;
+        padding-right: 1ex;
+      }
+      .profile_pic {
+        float: left;
+        img {
+          border: 1px solid black;
+          height: 60px;
+          width: 60px;
+        }
+      }
+      .details {
+        float: left;
+        margin-left: 1ex;
+        padding-top: .2ex;
+        .name {
+          font-size: 140%;
+          font-weight: bold;
+        }
+        .score {
+        }
+      }
+    }
+  }
+}
+
+#activity {
+  width: 30em;
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: white;
+  #latest-activity {
+    background-color: white;
+    height: 15em;
+    max-height: 15em;
+    overflow: scroll;
+  }
+}
+
+#controls {
+  padding: 1em;
+  a {
+    color: #999;
+  }
+}
+
+.clearfix {
+  clear: both;
+}
+
+#right-column {
+  float: right;
+}
+
+#auctions {
+  background-color: #fff;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 34em;
+  padding: 1em;
+  border-radius: 1em;
+  .auction {
+    background-color: #4c4c4c;
+    position: relative;
+
+    margin-bottom: 2em;
+    margin-right: 1ex;
+    float: left;
+
+    .container {
+      margin: 1ex;
+      width: 340px;
+      height: 210px;
+      padding: 10px;
+      background-position: center;
+/*
+      height: 13em;
+      width: 17em;
+*/
+    }
+
+    .state {
+      font-size: 140%;
+      font-weight: bold;
+    }
+    .pending, .inprogress, .completed, .finishing {
+      background-color: white;
+      opacity: 0.7;
+      border-radius: 1ex;
+      padding: 1em;
+      display: none;
+    }
+    .finishing {
+      font-size: 140%;
+      font-weight: bold;
+      text-align: center;
+    }
+    .pending {
+      .start { 
+        font-size: 200%;
+        font-weight: bold;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+      } 
+    }
+    .completed {
+      .winner {
+        text-align: center;
+        .user, .amount {
+          font-size: 150%;
+          font-weight: bold;
+        }
+      }
+    }
+    .inprogress {
+      .high-bid, .number-of-bids, .bids-per-second, .bids-per-user {
+        text-align: center;
+        font-weight: bold;
+      }
+      .high-bid {
+        font-size: 180%;
+      }
+      .number-of-bids {
+        font-size: 150%;
+      }
+      .bids-per-second, .bids-per-user {
+        text-align: left;
+        font-size: 130%;
+        clear: left;
+        .data {
+          float: left;
+          margin-right: .5ex;
+          text-align: right;
+          border: 1px solid #bbb;
+          width: 3em;
+          background-color: #ccc;
+        }
+      }
+      .timer {
+        width: 80%;
+        height: 2em;
+        border-radius: 1ex;
+        margin: auto;
+        margin-top: 1em;
+      }
+    }
+    .title {  
+      background-color: #4c4c4c;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
+      padding-top: 1ex;
+      padding-bottom: 1ex;
+      font-size: 110%;
+      font-weight: bold;
+      text-align: center;
+    }
+    .operations { 
+      position: absolute;
+      bottom: 2em;
+      a {
+        color: #999;
+      }
+    }
+  }
+}
+
+.ui-progressbar {
+      position: relative;
+      z-index: 10;
+      opacity: 1;
+      background-color: #fff;
+      border: 2px solid #799;
+      height: 2em;
+      text-align: left;
+      overflow: hidden;
+}
+.ui-progressbar .ui-progressbar-value {
+        background-color: #9bb;
+        margin: -1px;
+        height: 150%;
+}
+/*
+.ui-progressbar .ui-progressbar-overlay {
+        background-image: url("/assets/animated-overlay.gif");
+        height: 100%;
+        filter: alpha(opacity=25);
+        opacity: 0.25;
+}
+.ui-progressbar-indeterminate .ui-progressbar-value {
+        background-image: none;
+}
+*/
+
+#visualizer {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  .gear {
+    clear: both;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+    border-top: 1px solid #555;
+    .segment {
+      float: left;
+      margin-right: .5ex;
+      border: 1px solid black;
+    }
+    .meter {
+      clear: both;
+      .meterChunk {
+        float: left;
+        margin-right: .5ex;
+        border: 1px solid #777;
+      }
+    }
+  }
+}
+
+#login {
+  font-size: 200%;
+  input {
+    font-size: inherit;
+  }
+  text-align: center;
+}

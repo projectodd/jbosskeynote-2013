@@ -1,0 +1,56 @@
+<div data-role="header" data-theme="redhat" data-position="fixed" data-id="myHeader" class="appHeader" data-tap-toggle="false">
+    <img src="images/tmauctionslogo3.png" class="appHeaderLogo">
+    <a data-role="none" class="panel ui-btn-left" id="left-panel-button">
+        <img src="images/btn-menu.png">
+    </a>
+    <a class="panel ui-btn-right" id="right-panel-button" data-role="none">
+         <img src="images/btn-notf.png">
+    </a>
+    <span class="countbubble bubble"><%=notificationCount%></span>
+    <div class="bar small"></div>
+</div>
+<div id="alertwrapper" class="alerts hidden"></div>
+<div id="bidwrapper" class="alerts auction auctionalert hidden"></div>
+<div data-role="content">
+    <div style="float:left">
+        <img src=<%=profileImage%> class="profileImg">
+    </div>
+    <div style="float:left;margin-left: 5px;">
+        <span class="username"><%=name%></span>
+        <br>
+        <span class="email"><%=email%></span>
+    </div>
+    <div style="clear:both"></div>
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+            <div class="ui-bar ui-bar-rh cash" id="homecash">$<span><%=cash%></span></div>
+        </div>
+        <div class="ui-block-b">
+            <div class="ui-bar ui-bar-rh points" id="homepoints"><span><%=points%></span> points</div>
+        </div>
+    </div>
+    <div id="categoryList" class="center">
+        <a data-role="button" style="text-align:left" href="#items">
+            Browse Auctions
+            <span class="myNotif">
+                <img src="images/icon-catg.png">
+            </span>
+        </a>
+    </div>
+    <div id="myNotifications">
+        <a data-role="button" style="text-align:left" class="panel" id="notifications-right" >
+            My Notifications
+            <span class="myNotif bubble"><%=notificationCount%></span>
+        </a>
+    </div>
+</div>
+<div data-role="footer" data-theme="a" data-position="fixed" data-id="myFooter" data-tap-toggle="false">
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+            <div class="ui-bar ui-bar-a cash" id="footercash">$<span><%=cash%></span></div>
+        </div>
+        <div class="ui-block-b">
+            <div class="ui-bar ui-bar-a points" id="footerpoints"><span><%=points%></span> points</div>
+        </div>
+    </div>
+</div>

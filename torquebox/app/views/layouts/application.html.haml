@@ -1,0 +1,17 @@
+%html
+  %head
+    %title Auction
+    = stylesheet_link_tag :application
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery-ui'
+    = javascript_include_tag 'handlebars'
+  %body
+    #header
+      - unless @suppress_user_count
+        #registered-users
+          Registered Users:
+          %span.data
+            #{User.count}
+      %img{:src=>'/assets/banner_tmauctions.png'}
+    #navigation
+    = yield

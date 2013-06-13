@@ -1,0 +1,37 @@
+auctions:
+  - title: "Psy's Blue Jacket"
+    starting_price: 15
+    duration: 1
+    image_key: gangamstyle.png
+  - title: "Slash's Wig"
+    starting_price: 15
+    duration: 1
+    image_key: slashwigandhat.png
+  - title: "Macklemore Fur Coat"
+    starting_price: 15
+    duration: 1
+    image_key: furcoat.png
+  - title: "Flava Flav's Clock"
+    starting_price: 15
+    duration: 1
+    image_key: flavaflavclock.png
+  - title: "Def Leppard T-Shirt"
+    starting_price: 15
+    duration: 1
+    image_key: defleppard.png
+  - title: "Lady Gaga Tattoo Kit"
+    starting_price: 15
+    duration: 1
+    image_key: ladygagtattoo.png
+  - title: "Rolling Stones Sticker"
+    starting_price: 5
+    duration: 1
+    image_key: rollingstonessticker.png
+  - title: "Prince's Little Red Corvette"
+    starting_price: 5
+    duration: 1
+    image_key: redcorvette.png
+  - title: "Bono's Glasses"
+    starting_price: 5
+    duration: 1
+    image_key: bonoglasses.png

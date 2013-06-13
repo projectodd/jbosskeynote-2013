@@ -1,0 +1,22 @@
+<!--start loop--><% _.each( models, function( model, index, list ) {
+var needsstart = index % 2  === 0 ? true : false,
+    timeRemaining = model.timeRemaining(),
+    highestBidder = model.highestBidder( jbw.currentUser.id );
+
+if( needsstart ) { %> <!--start new grid-->
+    <div class="ui-grid-a">
+<%}
+%>
+        <div class="ui-block-<%=needsstart ? "a" : "b"%>">
+            <div class="notstartedoverlay <%=timeRemaining.notstarted ? "" : "hidden" %>">Auction Not Started</div>
+            <div class="auctionitem <%=timeRemaining.notstarted ? "notstarted" : ""%>" id="<%=model.get( "id" )%>">
+            <div class="flag <%=highestBidder ? "flaghigh" : "flagsold" %>  <%=timeRemaining.over ? "" : "hidden" %>"></div>
+                <img src="images/items/<%=model.get("image_key")%>" class="auctionitemimg">
+                <div class="auctionitemtitle"><%=model.get( "title" )%></div>
+            </div>
+        </div>
+<% if( !needsstart ) { %> <!--end new grid-->
+    </div>
+<%}
+} )%><!--end loop-->
+

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ "$TORQUEBOX_HOME" = "" ]; then
+    echo "\$TORQUEBOX_HOME not set. exiting."
+    exit 1
+fi
+
+export IMMUTANT_HOME=$TORQUEBOX_HOME
+
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+$BASE_DIR/bin/lein immutant deploy $BASE_DIR
+

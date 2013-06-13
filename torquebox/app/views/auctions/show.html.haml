@@ -1,0 +1,16 @@
+
+.auction
+  = @auction.title
+
+  .bids
+    Bids
+    - @auction.bids.each do |bid|
+      .bid
+        #{bid.amount} by #{bid.user} at #{bid.created_at}
+
+  .operations
+    - if ! @auction.started?
+      = link_to( "Start", start_auction_path( @auction ) )
+    - if @auction.inprogress?
+      = link_to( "Withdraw", withdraw_auction_path( @auction ) )
+      = link_to( "Bid", bid_auction_path( @auction ) )

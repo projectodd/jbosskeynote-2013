@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+
+  <!-- access environment variables -->
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="searchSystemEnvironment" value="true"/>
+  </bean>
+
+  <!-- camel routes -->
+  <!-- for detailed trace logging see: http://camel.apache.org/tracer.html -->
+  <camelContext trace="false" xmlns="http://camel.apache.org/schema/spring">
+    <route id="vertx-to-AMQ">
+      <from uri="vertx:bids"/>
+      <to uri="activemq:stomp.bids"/>
+      <to uri="activemq:audit.bids"/>
+    </route>
+
+    <route id="AMQ-to-TorqueBox">
+      <from uri="activemq:stomp.bids"/>
+      <to uri="stomp:queue:torqueBoxQueue"/>
+    </route>
+
+    <!-- TODO remove this route when we have vertx -->
+<!--
+    <route id="simulateBids">
+      <from uri="timer:foo?period=10000"/>
+      <bean ref="bidSimulator" method="simulateBid"/>
+      <to uri="vertx:bids"/>
+    </route>
+-->
+
+    <route id="user-registration">
+      <from uri="vertx:demo.user-registration"/>
+      <to uri="stomp:queue:/user-registration"/>
+    </route>
+
+    <route id="auctions">
+      <from uri="stomp:queue:/auctions"/>
+      <to uri="activemq:audit.auctions"/>
+      <to uri="vertx:demo.auctions"/>
+    </route>
+
+    <route id="bids">
+      <from uri="vertx:demo.bids"/>
+      <to uri="stomp:queue:/bid"/>
+    </route>
+
+    <route id="user-notifications">
+      <from uri="stomp:queue:/user-notifications"/>
+      <recipientList>
+        <simple>vertx:demo.user-notifications.${headers.user_id}</simple>
+      </recipientList>
+    </route>
+  </camelContext>
+
+  <!-- we can configure the tracer by defining the tracer bean and set the properties as we like -->
+  <!-- the id name can be anything its the class that must be org.apache.camel.processor.interceptor.Tracer -->
+  <bean id="camelTracer" class="org.apache.camel.processor.interceptor.Tracer">
+    <property name="traceExceptions" value="false"/>
+    <property name="traceInterceptors" value="true"/>
+    <property name="logLevel" value="INFO"/>
+    <property name="logName" value="keynote"/>
+    <property name="traceOutExchanges" value="true"/>
+  </bean>
+
+  <bean id="traceFormatter" class="org.apache.camel.processor.interceptor.DefaultTraceFormatter">
+    <property name="showOutBody" value="true"/>
+    <property name="showOutBodyType" value="true"/>
+  </bean>
+
+  <!-- configure the vertx component -->
+  <bean id="vertx" class="org.vertx.core.camel.VertxComponent">
+    <!-- configure host/port -->
+    <property name="host" value="127.0.0.1"/>
+    <property name="port" value="25501"/>
+  </bean>
+
+  <!-- Lets create a stomp component -->
+  <bean id="stomp" class="org.apache.camel.component.jms.JmsComponent">
+    <property name="connectionFactory">
+      <bean class="org.fusesource.stomp.jms.StompJmsConnectionFactory">
+        <property name="brokerURI" value="tcp://${brokerHost:bam.keynote.projectodd.org}:8675"/>
+        <property name="queuePrefix" value="/"/>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- our little simulator for now to stub out vertx -->
+<!--
+  <bean id="bidSimulator" class="org.jboss.keynote2013.camel.BidSimulator"/>
+-->
+
+
+  <!-- Lets connect the Camel ActiveMQ component to the embedded broker.
+       See http://camel.apache.org/activemq.html for more information.
+  -->
+  <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="brokerURL" value="failover:tcp://localhost:31313"/>
+  </bean>
+
+
+
+  <!-- lets enable nice log queries in hawtio -->
+  <bean id="logQuery" class="org.fusesource.insight.log.log4j.Log4jLogQuery" lazy-init="false" scope="singleton"
+        init-method="start" destroy-method="stop"/>
+
+  <!-- tell Camel to use localhost as the JMX MBean naming to have a fixed name style -->
+  <bean id="managementName" class="org.apache.camel.management.DefaultManagementNamingStrategy">
+    <!-- the hostname does not have to be resolvable, it can be any value you want -->
+    <property name="hostName" value="localhost"/>
+    <property name="domainName" value="org.apache.camel"/>
+  </bean>
+
+
+  <!-- This creates an embedded ActiveMQ Broker -->
+  <broker xmlns="http://activemq.apache.org/schema/core" brokerName="broker1" useJmx="true" persistent="false"
+          dataDirectory="activemq-data">
+    <managementContext>
+       <managementContext createConnector="false"/>
+    </managementContext>
+    <transportConnectors>
+      <transportConnector uri="tcp://localhost:31313"/>
+      <transportConnector uri="stomp://localhost:31316"/>
+    </transportConnectors>
+  </broker>
+</beans>

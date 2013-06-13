@@ -1,0 +1,627 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+.center {
+	text-align: center;
+}
+
+.ui-input-text {
+  display: inline-block;
+  width: 48%;
+  margin: 0 2% 0 0;
+  /*text-align: right;*/
+  background-color: white;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+   border-radius: 0;
+}
+
+div.ui-input-text  {
+  background: #f9f9f9;
+  background-image: -webkit-gradient(linear,left top,left bottom,from( #f9f9f9 ),to( #eee ));
+  background-image: -webkit-linear-gradient( #f9f9f9,#eee );
+  background-image: -moz-linear-gradient( #f9f9f9,#eee );
+  background-image: -ms-linear-gradient( #f9f9f9,#eee );
+  background-image: -o-linear-gradient( #f9f9f9,#eee );
+  background-image: linear-gradient( #f9f9f9,#eee );
+}
+
+input.ui-input-text {
+  font-size: 18px;
+}
+
+.ui-checkbox {
+    width: 140px;
+}
+
+.ui-btn-corner-all {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.profileImg {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #8ab6bc;
+}
+
+/* Swipe works with mouse as well but often causes text selection. */
+#main * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#bid {
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    -o-user-select: initial;
+    user-select: initial;
+}
+
+.countbubble {
+    background: #c64540;
+    position: absolute;
+    right: 6px;
+    bottom: 3px;
+    min-width: 23px;
+    height: 14px;
+    color: #fff;
+    -webkit-border-radius: 44%;
+    -moz-border-radius: 44%;
+    -o-border-radius: 44%;
+    -ms-border-radius: 44%;
+    border-radius: 44%;
+    border: 1px solid #fff;
+    text-align: center;
+    font-size: 10px;
+    z-index: 10
+}
+
+.countbubble.none {
+    display: none;
+}
+
+.myNotif {
+  float: right;
+  color: #c0433e;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ui-bar-redhat,
+.logo {
+  background-image: url( "images/bg-red.png" );
+}
+
+.logo {
+  height: 95px;
+  text-align: center;
+}
+
+.logo img {
+  padding-top: 20px;
+}
+
+.ui-body-c, .ui-overlay-c {
+ background: url("images/bg-dark.png" ) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.bar {
+  height: 15px;
+  background-image: url( "images/bg_grey.png" );
+
+  -moz-box-shadow: 3px 3px 5px #5d5d5d;
+  -webkit-box-shadow: 3px 3px 5px #5d5d5d;
+  box-shadow: 3px 3px 5px #5d5d5d;
+}
+
+.bar.small {
+  height: 4px;
+}
+
+.ui-btn-up-c, .ui-btn-hover-c {
+/*Button rounded corner: 3px;*/
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: 0 0 0;
+  background-color: #d5dbd9; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, #d5dbd9, #b4b6b7); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top, #d5dbd9, #b4b6b7); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top, #d5dbd9, #b4b6b7); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top, #d5dbd9, #b4b6b7); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to bottom, #d5dbd9, #b4b6b7); /* Standard syntax; must be last */
+}
+
+
+.ui-btn-up-c:visited, .ui-btn-up-c a.ui-link-inherit, .ui-btn-hover-c {
+  color: #373737;
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: 0 0 0;
+}
+
+.appHeader {
+  text-align: center;
+  height: 40px;
+}
+
+.appHeader img {
+  padding-top: 5px;
+}
+
+.ui-header .ui-btn-left, .ui-footer .ui-btn-left {
+  left: 15px;
+}
+
+.ui-header .ui-btn-right, .ui-footer .ui-btn-right {
+  right: 15px;
+}
+
+.ui-header-fixed .ui-btn-left, .ui-header-fixed .ui-btn-right {
+  top: 1px;
+}
+
+.ui-header-fixed {
+  padding-top:4px;
+}
+
+.ui-bar-a {
+  text-align: center;
+  height: 30px;
+  border-top: 2px #3c3c3c;
+  background-color: #282828; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, #282828, #101010); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top, #282828, #101010); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top, #282828, #101010); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top, #282828, #101010); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to bottom, #282828, #101010); /* Standard syntax; must be last */
+}
+
+.ui-bar-rh {
+  margin-top: 20px;
+  font-family: arial, sans-serif;
+  background-color: #676a6b;
+  color: #d4dad9;
+  border: 1px solid #525758;
+  font-size: 22px;
+  text-align: center;
+  text-shadow: 0 0 0;
+}
+
+.username {
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #8ab6bc;
+  text-shadow: 0 0 0;
+}
+
+.email {
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  color: #d4dad9;
+  text-shadow: 0 0 0;
+}
+
+.ui-bar-b {
+  font-family: arial;
+  font-size: 14px;
+  color: #c64540;
+  text-shadow: 0 0 0;
+  border-top: 0;
+  border-bottom: 2px solid #d5dbd9;
+}
+
+.ui-body-b, .ui-overlay-b, .ui-bar-b, .ui-btn-up-b, .ui-btn-hover-b {
+  background: url( "images/bg_grey.png" );
+}
+
+.ui-btn-up-b:visited, .ui-btn-up-b a.ui-link-inherit, .ui-btn-hover-b:visited, .ui-btn-hover-b a.ui-link-inherit{
+  color:#474e50;
+  font-family: arial;
+  font-size: 14px;
+  text-shadow: 0 0 0;
+  font-weight: normal;
+}
+
+.ui-btn-up-b, .ui-btn-hover-b {
+  color:#474e50;
+  font-family: arial;
+  font-size: 14px;
+  text-shadow: 0 0 0;
+  border-top: 0;
+  border-bottom: 1px solid #fff;
+}
+
+#left-panel .ui-btn-up-b, #left-panel .ui-btn-hover-b {
+  border-bottom: 2px solid #d5dbd9;
+}
+
+
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+  min-height: 0;
+}
+
+.ui-li-thumb, .ui-listview .ui-li-icon {
+  top:7px;
+  margin-left: 10px;
+}
+
+.auctionnav {
+  margin-left: 14px;
+}
+
+.homenav {
+  margin-left: 10px;
+}
+
+.navheader {
+  height: 1px;
+}
+
+.navauctionheader {
+  color: #c64540;
+  font-size: 14px;
+  font-weight: normal;
+  top: 20px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+
+.ui-btn-text a.nav {
+  margin-left: -50px;
+}
+
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+  white-space: normal;
+}
+
+.auction {
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  text-shadow: 0 0 0;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: #d4dad9;
+}
+
+.auctiontitle {
+  font-size: 15px;
+  background-color: #696c6c;
+}
+
+.auctionalert {
+  font-size: 14px;
+  color: #ce504d;
+  background-color: #a8a8a9;
+}
+
+.bidmoney {
+  padding: 15px;
+  color: #8ab6bc;
+  font-size: 24px;
+}
+
+.bidtimeinfo {
+  font-size: 14px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.bidinput {
+  text-align: left;
+}
+
+.auctionslist {
+  text-align: center;
+}
+
+.auctionitem {
+  height: 135px;
+  width: 130px;
+  background-color: #d5dbd9; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, #d5dbd9, #b4b6b7); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top, #d5dbd9, #b4b6b7); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top, #d5dbd9, #b4b6b7); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top, #d5dbd9, #b4b6b7); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to bottom, #d5dbd9, #b4b6b7); /* Standard syntax; must be last */
+}
+
+.auctionitemimg {
+  padding: 3px;
+  width: 119px;
+  height: 90px;
+}
+
+.auctionitemtitle {
+  color: #474e50;
+  font-size: 14px;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  text-shadow: 0 0 0;
+  text-align: center;
+}
+
+.ui-grid-a {
+  padding-bottom: 20px;
+}
+
+.notstarted {
+  opacity: 0.3 ;
+}
+
+.notstartedoverlay {
+  position: absolute;
+  color: #FFF;
+  margin-top: 25px;
+  width: 81px;
+  margin-left: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: arial, sans-serif;
+  z-index: 5;
+}
+
+.flag {
+  position: absolute;
+  margin-top: 0;
+  margin-left: -13px;
+  width: 100%;
+  height: 4%;
+}
+
+.flaghigh {
+  background: url( "../images/flag-hbid.png" ) no-repeat;
+}
+
+.flagsold {
+  background: url( "../images/flag-sold.png" ) no-repeat;
+}
+
+.ui-icon-navleft {
+  background: url( "images/icon-arrow.png" ) no-repeat;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+}
+
+.ui-icon-green-circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  background-color: green; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, green, #b4b6b7); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top, green, #b4b6b7); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top, green, #b4b6b7); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top, green, #b4b6b7); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to bottom, green, #b4b6b7); /* Standard syntax; must be last */
+}
+
+.ui-icon-red-circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  background-color: red; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, red, #b4b6b7); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top, red, #b4b6b7); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top, red, #b4b6b7); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top, red, #b4b6b7); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to bottom, red, #b4b6b7); /* Standard syntax; must be last */
+}
+
+.ui-icon-spinner {
+  background: url( "images/tiny_spinner.gif" ) no-repeat;
+}
+
+#submitting {
+  text-align: center;
+  color: #8ab6bc;
+}
+/**Bootstrap related**/
+
+/*!
+ * Bootstrap v2.3.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.alert {
+  margin-bottom: 20px;
+  text-shadow: 0, 0, 0;
+  background-color: #a8a8a9;
+  border: 0;
+}
+
+.globalalert {
+  padding-bottom: 15px;
+}
+
+.alert,
+.alert h4 {
+  color: #ce504d;
+  font-size: 14px;
+  font-family: arial, sans-serif;
+}
+.alert h4 {
+  margin: 0;
+}
+.alert .close {
+  position: relative;
+  top: -10px;
+  line-height: 20px;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.alert-success h4 {
+  color: #468847;
+}
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.alert-danger h4,
+.alert-error h4 {
+  color: #b94a48;
+}
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+.alert-info h4 {
+  color: #3a87ad;
+}
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.close:hover,
+.close:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.alerts * {
+  margin-bottom: 5px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+a {
+  text-decoration: initial;
+  color: inherit;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px){
+    .bid.profileImg {
+      width: 360px;
+      height: 270px;
+      border: 0;
+    }
+
+    #itemDetail {
+      text-align: center;
+    }
+}
+
+@media (max-width: 768px){
+    .bid.profileImg {
+      width: 360px;
+      height: 270px;
+      border: 0;
+    }
+
+    #itemDetail {
+      text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+  .bid.profileImg {
+    width: 80%;
+    height: 270px;
+    border: 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .bid.profileImg {
+    width: 100%;
+    height: 25%;
+    border: 0;
+  }
+}

@@ -1,0 +1,36 @@
+
+= javascript_include_tag "http://#{request.host}:#{endpoint.port}/stomp.js"
+= javascript_include_tag :mockclient
+%h1 Mock Client
+
+%h2 User
+
+= select_tag 'user_id', options_for_select( @users )
+
+%h2 Auctions
+
+#auctions
+
+
+%h2 Bid
+= form_tag({}, {:id=>'bid-form'}) do 
+  .field
+    %label
+      Auction
+    .input
+      %select#auction_id{:size=>10}
+        - for auction in @auctions
+          %option{:id=>"auction_#{auction.id}", :value=>auction.id}
+            = auction.title
+  .field
+    %label
+      Amount
+    .input
+      = text_field_tag 'bid_amount'
+  .field
+    = submit_tag
+
+%h2 Notices
+
+#notices
+

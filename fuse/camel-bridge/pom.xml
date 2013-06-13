@@ -1,0 +1,305 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.redhat.keynote.2013</groupId>
+  <artifactId>camel-bridge</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>vertx torquebox camel bridge</name>
+
+  <properties>
+    <jettyPort>8081</jettyPort>
+    <context>/fuse</context>
+    <hawtio-config-dir>${basedir}/hawtio-config</hawtio-config-dir>
+    <hawtio-config-repo>https://github.com/hawtio/hawtio-config.git</hawtio-config-repo>
+
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+
+    <hawtio-version>1.1</hawtio-version>
+
+    <perfectus-number>015</perfectus-number>
+    <perfectus-build>redhat-60${perfectus-number}</perfectus-build>
+    <!--
+        <perfectus-build>fuse-71-047</perfectus-build>
+    -->
+    <activemq-version>5.8.0.${perfectus-build}</activemq-version>
+    <activemq-leveldb-artifactid>activemq-leveldb-store</activemq-leveldb-artifactid>
+    <build-helper-maven-plugin-version>1.7</build-helper-maven-plugin-version>
+    <camel-version>2.10.0.${perfectus-build}</camel-version>
+    <exec-maven-plugin-version>1.2.1</exec-maven-plugin-version>
+    <fabric-version>7.2.0.redhat-${perfectus-number}</fabric-version>
+
+    <!-- TODO until build 16 is done we need snapshot to get maven coords on stack frames -->
+    <insight-log4j.version>99-master-SNAPSHOT</insight-log4j.version>
+    <jackson-2-version>2.1.0</jackson-2-version>
+    <jetty-version>8.1.3.v20120416</jetty-version>
+    <jetty-version>7.6.8.v20121106</jetty-version>
+    <jetty-plugin-version>7.6.8.v20121106</jetty-plugin-version>
+    <junit-version>4.11</junit-version>
+    <log4j-version>1.2.17</log4j-version>
+    <maven-bundle-plugin-version>2.3.7</maven-bundle-plugin-version>
+    <maven-source-plugin-version>2.1.2</maven-source-plugin-version>
+    <maven-resources-plugin-version>2.6</maven-resources-plugin-version>
+    <maven-surefire-plugin-version>2.13</maven-surefire-plugin-version>
+    <servlet-api-version>2.5</servlet-api-version>
+    <slf4j-version>1.6.6</slf4j-version>
+    <spring-version>3.1.3.RELEASE</spring-version>
+    <xbean-version>3.12</xbean-version>
+    <war-plugin-version>2.1.1</war-plugin-version>
+
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>eap</id>
+      <url>http://maven.repository.redhat.com/techpreview/all</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>oss-sonatype-snapshots</id>
+      <name>OSS Sonatype Nexus Snapshots</name>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>fusesource.m2-snapshot</id>
+      <name>FuseSource Community Snapshot Repository</name>
+      <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>release.fusesource.org</id>
+      <name>FuseSource Release Repository</name>
+      <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>snapshot.fusesource.org</id>
+      <name>FuseSource Early Access Repository</name>
+      <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>eap</id>
+      <url>http://maven.repository.redhat.com/techpreview/all</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>io.hawt</groupId>
+      <artifactId>hawtio-default</artifactId>
+      <version>${hawtio-version}</version>
+      <type>war</type>
+    </dependency>
+<!--
+    TODO this dependency seems to bork IDEA :)
+
+    <dependency>
+      <groupId>org.jboss.spec</groupId>
+      <artifactId>jboss-javaee-6.0</artifactId>
+      <version>3.0.0.Final-redhat-1</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+-->
+
+    <!-- vertx -->
+    <dependency>
+    	<groupId>org.vert-x</groupId>
+    	<artifactId>vertx-core</artifactId>
+    	<version>1.3.1.final</version>
+    </dependency>
+
+    <!-- stuff for camel and hazelcast -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jms</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-hazelcast</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jackson</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+
+    <!-- activemq broker and camel connector -->
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-client</artifactId>
+      <version>${activemq-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-broker</artifactId>
+      <version>${activemq-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-stomp</artifactId>
+      <version>${activemq-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>${activemq-version}</version>
+    </dependency>
+
+    <!-- spring stuff - could replace with blueprint later.. -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+
+
+    <!-- stomp client library -->
+    <dependency>
+      <groupId>org.fusesource.stompjms</groupId>
+      <artifactId>stompjms-client</artifactId>
+      <version>1.14</version>
+    </dependency>
+    <dependency>
+      <groupId>xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.2</version>
+    </dependency>
+  </dependencies>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat6-maven-plugin</artifactId>
+        <version>2.0</version>
+        <configuration>
+          <!-- application path always starts with /-->
+          <path>/</path>
+          <warDirectory>${basedir}/target/${project.artifactId}-${project.version}</warDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>${jetty-version}</version>
+        <configuration>
+          <webAppSourceDirectory>${project.build.directory}/${project.name}-${project.version}</webAppSourceDirectory>
+          <scanIntervalSeconds>1</scanIntervalSeconds>
+          <useTestScope>true</useTestScope>
+          <webAppConfig>
+            <contextPath>${context}</contextPath>
+          </webAppConfig>
+          <connectors>
+            <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+              <port>${jettyPort}</port>
+              <maxIdleTime>60000</maxIdleTime>
+            </connector>
+          </connectors>
+          <systemProperties>
+            <systemProperty>
+              <key>hawtio.config.dir</key>
+              <value>${hawtio-config-dir}</value>
+            </systemProperty>
+            <systemProperty>
+              <key>hawtio.config.repo</key>
+              <value>${hawtio-config-repo}</value>
+            </systemProperty>
+            <systemProperty>
+              <key>hazelcast.jmx</key>
+              <value>true</value>
+            </systemProperty>
+          </systemProperties>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.0</version>
+        <configuration>
+          <port>9090</port>
+          <path>/hawtio</path>
+          <systemProperties>
+          </systemProperties>
+          <useTestClasspath>false</useTestClasspath>
+          <warSourceDirectory>${project.build.directory}/${project.name}-${project.version}</warSourceDirectory>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <!-- When built in OpenShift the 'openshift' profile will be used when
+          invoking mvn. -->
+      <!-- Use this profile for any OpenShift specific customization your app
+          will need. -->
+      <!-- By default that is to put the resulting archive into the 'webapps'
+          folder. -->
+      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+      <id>openshift</id>
+      <build>
+        <finalName>hawtio</finalName>
+        <plugins>
+          <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.1.1</version>
+            <configuration>
+              <outputDirectory>webapps</outputDirectory>
+              <warName>ROOT</warName>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

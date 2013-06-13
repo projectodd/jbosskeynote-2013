@@ -1,0 +1,4 @@
+
+To run the bot:
+
+  mvn exec:java

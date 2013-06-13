@@ -1,0 +1,8 @@
+
+Bidding on #{@auction}
+
+= form_for( @bid ) do |f|
+  = f.hidden_field( :auction_id )
+  = f.collection_select(:user_id, @users, :id, :identifier )
+  = f.text_field :amount
+  = f.submit 

@@ -1,0 +1,24 @@
+<div data-role="header" data-position="fixed" data-id="myHeader">
+    <h1>Categories</h1>
+    <a href="#home" data-role="button" data-inline="true" date-rel="back">back</a>
+    <a class="panel" id="right-panel-button" data-role="button" data-icon="bars" data-iconpos="notext"></a>
+    <span class="countbubble"><%=notificationCount%></span>
+</div>
+<div id="alertwrapper"></div>
+<div data-role="content">
+    <div id="categoryList" class="center">
+        <ul data-role="listview" class="categoryList">
+            <% _.each( categories, function( category ) { %>
+                <li><a href="#items/<%=category.get( "id" )%>"><%=category.get( "name" )%></a></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<div data-role="footer" data-position="fixed" data-id="myFooter">
+    <div data-role="navbar">
+        <ul>
+            <li id="footercash" ><a><%=cash%></a></li>
+            <li id="footerpoints" ><a><%=points%></a></li>
+        </ul>
+    </div>
+</div>

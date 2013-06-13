@@ -1,0 +1,23 @@
+
+- @auctions.each do |auction|
+  .auction
+    = link_to( auction, auction )
+    - high_bid = auction.bids.first
+    - if high_bid
+      .high_bid 
+        $#{high_bid.amount} by #{link_to high_bid.user, high_bid.user}
+    .operations
+      - if auction.started?
+        Started at #{auction.started_at}
+        - if auction.completed?
+          - if high_bid
+            Won by #{high_bid.user}
+          - else
+            Won by nobody
+        - else
+          In progress
+          = link_to( "Bid", bid_auction_path( auction ) )
+          = link_to( "Withdraw", withdraw_auction_path( auction ) )
+          = link_to( "End", complete_auction_path( auction ) )
+      - else
+        = link_to( "Start", start_auction_path( auction ) )
